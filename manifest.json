@@ -1,0 +1,13 @@
+{
+  "manifest_version": 2,
+  "name": "Send2Mars",
+  "version": "0.1",
+  "content_scripts": [
+    {
+      "matches": [
+        "https://mobile.veracode.com/myapps/*"
+      ],
+      "js": ["jquery-2.1.4.min.js", "content.js"]
+    }
+  ]
+}
