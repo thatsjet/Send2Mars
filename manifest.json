@@ -2,12 +2,17 @@
   "manifest_version": 2,
   "name": "Send2Mars",
   "version": "0.1",
+  "web_accessible_resources": [
+    "/images/*.png"
+  ],
   "content_scripts": [
     {
-      "matches": [
-        "https://mobile.veracode.com/myapps/*"
-      ],
-      "js": ["jquery-2.1.4.min.js", "content.js"]
+      "matches": ["https://mobile.veracode.com/myapps?appleid=*"],
+      "js": ["jquery-2.1.4.min.js", "bootstrap.min.js", "global.js", "GetAppleID.js"]
+    },
+    {
+      "matches": ["https://itunes.apple.com/*/app/*"],
+      "js": ["jquery-2.1.4.min.js", "bootstrap.min.js", "global.js", "Send2Mars.js"]
     }
   ]
 }

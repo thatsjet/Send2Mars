@@ -1,17 +1,22 @@
-/*
- here's how this needs to work
 
- - get the location of the current page
- - load contents of MARS window via js?
- - update text of IOS form and set UI hide css for that ui component
- - click upload
+ function getAppleID(){
+   var idpath = window.location.pathname.split('/');
+   var appleid = idpath[4].substring(2);
+   if (appleid==null){
+      return null;
+   }
+   else{
+      return appleid;
+   }
+ }
 
- ALTERNATIVELY
- - a chrome extension
- - inject a js into the MARS app
-    * search itunes field
-    * open new window/tab with search results
-    * change input to grabID button after search
-    * grabID gets the URL of the related iTunes page
+var imgURL = chrome.extension.getURL("/images/send2veracode.png");
+var marslink = 'https://mobile.veracode.com/myapps?appleid=' + getAppleID();
 
- */
+$('<img />').attr({
+  src: imgURL,
+  width:'200',
+  height:'51'
+}).appendTo($('<a />').attr({
+  href:marslink
+}).insertAfter('a.action.view-in-itunes'));
