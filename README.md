@@ -11,7 +11,7 @@ https://chrome.google.com/webstore/detail/send2mars/mhclmieocbkgkjlbnohigejkcakd
 
 ### 2016-04-26
 
-Fixed bug where modal window would shown repeatedly after upload.
+Fixed bug where modal window would show repeatedly after upload.
 
 
 ### 2016-04-08
