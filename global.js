@@ -1,11 +1,27 @@
-var hasbeenshown = false;
+/* globals chrome */
+var background = {
 
-function urlParam(name){
-    var results = new RegExp('[\?&]' + name + '=([^&#]*)').exec(window.location.href);
-    if (results==null){
-       return null;
-    }
-    else{
-       return results[1] || 0;
-    }
-}
+  modalSeen: {},
+
+  init: function(){
+      //listen for messages and route to appropriate function
+      chrome.runtime.onMessage.addListener(function(request,sender,sendResponse) {
+          if(request.fn in background){
+            background[request.fn](request,sender,sendResponse);
+          }
+          //console.log("message received", request);
+      });
+
+  },
+
+  setModalSeen: function(request,sender,sendResponse){
+      //console.log("setting modalSeen", request.value);
+      this.modalSeen = request.value;
+  },
+
+  getModalSeen: function(request,sender,sendResponse){
+    sendResponse(this.modalSeen);
+  }
+};
+
+background.init();

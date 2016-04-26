@@ -1,29 +1,39 @@
 {
   "manifest_version": 2,
   "name": "Send2Mars",
-  "version": "0.1",
+  "version": "0.2",
+  "background": {
+    "scripts": ["global.js"]
+  },
+  "browser_action": {
+    "default_icon": "/images/icon.png"
+  },
+  "permissions": [
+    "cookies",
+    "*://*.itunes.com/*",
+    "*://*.veracode.com/*",
+    "*://*.google.com/*",
+    "activeTab"
+  ],
   "web_accessible_resources": [
     "/images/*.png"
   ],
   "content_scripts": [
     {
       "matches": ["https://mobile.veracode.com/myapps?appleid=*"],
-      "js": ["jquery-2.1.4.min.js", "bootstrap.min.js", "iTunesModal.js"]
+      "js": ["jquery.min.js", "bootstrap.min.js", "iTunesModal.js"]
     },
     {
       "matches": ["https://mobile.veracode.com/myapps?googleid=*"],
-      "js": ["jquery-2.1.4.min.js", "bootstrap.min.js", "gPlayModal.js"]
+      "js": ["jquery.min.js", "bootstrap.min.js", "gPlayModal.js"]
     },
     {
       "matches": ["https://itunes.apple.com/*/app/*"],
-      "js": ["jquery-2.1.4.min.js", "bootstrap.min.js", "iTunes2Mars.js"]
+      "js": ["jquery.min.js", "bootstrap.min.js", "iTunes2Mars.js"]
     },
     {
       "matches": ["https://play.google.com/store/apps/details*"],
-      "js": ["jquery-2.1.4.min.js", "bootstrap.min.js", "gPlay2Mars.js"]
+      "js": ["jquery.min.js", "bootstrap.min.js", "gPlay2Mars.js"]
     }
-  ],
-  "background": {
-    "scripts": ["global.js"]
-  }
+  ]
 }
